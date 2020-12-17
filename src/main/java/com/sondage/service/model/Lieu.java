@@ -3,11 +3,10 @@ package com.sondage.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Entity
 @Table(	name = "lieu" )
-public class Lieu implements Serializable {
+public class Lieu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
