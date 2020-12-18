@@ -11,17 +11,17 @@ Ce site permet de créer des sondages en y ajoutant une description, un lieu de 
 * Utilisation de PostgreSQL pour la Base de donnée
 
 ### Prérequis
+Sur un terminal :
+  Pour lancer le back
+  * ./mvnw spring-boot:run
 
-Pour lancer le back
-* ./mvnw spring-boot:run
+  Pour lance le front
+  * cd Frontend
+  * npm install
+  * ng serve
 
-Pour lance le front
-* cd Frontend
-* npm install
-* ng serve
-
-Sur Internet 
-* localhost:4200/auth
+  Sur Internet 
+  * localhost:4200/auth
 
 ### Consignes respectées
 
