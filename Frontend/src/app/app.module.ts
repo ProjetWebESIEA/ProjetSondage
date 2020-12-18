@@ -16,6 +16,10 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +48,10 @@ import { MatNativeDateModule } from '@angular/material';
   entryComponents: [DialogSondageComponent
   ],
   imports: [
+    MatCardModule,
+    MatGridListModule,
+    MatListModule,
+    MatDividerModule,
     MatSelectModule,
     MatSnackBarModule,
     MatPaginatorModule,

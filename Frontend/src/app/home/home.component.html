@@ -1,7 +1,8 @@
 <div class="container">
     <div class="row" *ngFor="let sondage of sondageList">
         <div class="col" style="width: 40;">
-                <mdb-card style="margin: 1%;">
+          <mat-card style="margin: 3%;">
+                  
                         <div class="view rgba-white-slight waves-light" mdbWavesEffect>
                           <!-- Card img -->
 
@@ -10,32 +11,56 @@
                           </a>
                         </div>
                         <!--Card content-->
-                        <mdb-card-body>
-
-
-                          <!--Title-->
-                          <mdb-card-title>
+                        <mat-card-content>
+                          <mat-card-title>
                             <h2>{{sondage.nom}}</h2>
-                          </mdb-card-title>
+                          </mat-card-title>
+                          <div class="row">
+
+                            <div class="col-sm">
+                          <!--Title-->
+
                           
                           <!--Text-->
-                          <mdb-card-text><i class="fas fa-quote-left"></i>&nbsp;{{sondage.description}}&nbsp;<i class="fas fa-quote-right"></i></mdb-card-text>
-                          
-                          <button mat-raised-button color="primary"><i class="far fa-thumbs-up"></i> Voter</button>
+                          <p>Description :</p>
+                          <i class="fas fa-quote-left"></i>&nbsp;{{sondage.description}}&nbsp;<i class="fas fa-quote-right"></i>
+                          </div>
+
+                          <mat-divider vertical="true" style="color: black;"></mat-divider>
+
+                          <div class="col-sm">
+                            <p>Choisissez une date et un lieu : </p>
+                            <div class="row">
+                            <div class="col-sm">
+                              <mat-selection-list #date>
+                                <mat-list-option *ngFor="let date of sondage.date" [value]="date">
+                                  {{date.date}}
+                                </mat-list-option>
+                              </mat-selection-list>
+                            </div>
+
+                            <div class="col-sm">
+                              <mat-selection-list #lieu>
+                                <mat-list-option *ngFor="let lieu of sondage.lieu" [value]="lieu">
+                                  {{lieu.libelleLieu}}
+                                </mat-list-option>
+                              </mat-selection-list>
+                              <p>
+                                Option selected: {{lieu.selectedOptions.selected[0]?.value.id}}
+                              </p>
+                          </div>
+                        </div>
+                         </div>
+
                           
 
-                        </mdb-card-body>
+
+                          </div>
+                        <button mat-raised-button color="primary" (click)="voter(lieu.selectedOptions.selected[0]?.value.id,date.selectedOptions.selected[0]?.value.id, sondage.id)"><i class="far fa-thumbs-up"></i> Voter</button>
+                        </mat-card-content>
                           <!-- Card footer -->
-                        <mdb-card-footer class="mdb-color lighten-3 text-center">
-                          <ul class="list-unstyled list-inline font-small mt-3">
-                            <li class="list-inline-item pr-2 white-text">
-                              <mdb-icon far icon="clock" class="pr-1" aria-placeholder="Date de l'evenement"></mdb-icon>{{sondage.date}}</li>
-                            <li class="list-inline-item pr-2 white-text">
-                              <mdb-icon far icon="users" class="pr-1" aria-placeholder="Personnes ayant votés"></mdb-icon>2
-                            </li>
-                          </ul>
-                        </mdb-card-footer>
-                      </mdb-card>
+                        
+                      </mat-card>
                       <!-- Card -->
         </div>
     </div>

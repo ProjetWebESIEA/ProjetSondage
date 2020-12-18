@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { SondageService } from '../services/sondage.service';
 import {MatDialog, MatDialogRef,MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogSondageComponent } from '../dialog/dialogSondage.component';
@@ -16,8 +16,10 @@ export interface DialogData {
 export class HomeComponent implements OnInit {
   lieu: string;
   name: string;
-
   sondageList;
+  
+  
+
   constructor(private sondageService: SondageService, public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -38,7 +40,8 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogSondageComponent, {
       height: '300px',
       width: '900px',
-      data: {name: this.name, lieu: this.lieu}
+      data: this.sondageList
+      //data: {name: this.name, lieu: this.lieu}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -46,6 +49,11 @@ export class HomeComponent implements OnInit {
       console.log('The dialog was closed');
       //this.animal = result;
     });
+  }
+
+  voter(idLieu, idDate, idSondage): void {
+    console.log(idSondage);
+    
   }
 
 }
