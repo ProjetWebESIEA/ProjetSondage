@@ -61,4 +61,8 @@ Page d'informations utilisateur
 
 <img width="1085" alt="page information utilisateur" src="https://user-images.githubusercontent.com/62753715/102665872-f57d0880-4185-11eb-98fb-4863464e7a66.png">
 
+Page résumant mes sondages
+
+<img width="1085" alt="page mes sondages" src="https://user-images.githubusercontent.com/62753715/102667784-7fc76b80-418a-11eb-83c5-659f3c4f5a25.png">
+
 
