@@ -33,6 +33,7 @@ import { SondageService } from './services/sondage.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogSondageComponent } from './dialog/dialogSondage.component';
 import { MatNativeDateModule } from '@angular/material';
+import { VoteService } from './services/vote.service';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { MatNativeDateModule } from '@angular/material';
   providers: [
     AuthService,
     SondageService,
+    VoteService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

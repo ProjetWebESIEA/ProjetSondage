@@ -1,7 +1,8 @@
 <div class="container">
     <div class="row" *ngFor="let sondage of sondageList">
         <div class="col" style="width: 40;">
-          <mat-card style="margin: 3%;">
+          <!-- NOT VOTED CARD-->
+          <mat-card *ngIf="!sondage.isVoted" style="margin: 2%;">
                   
                         <div class="view rgba-white-slight waves-light" mdbWavesEffect>
                           <!-- Card img -->
@@ -16,16 +17,12 @@
                             <h2>{{sondage.nom}}</h2>
                           </mat-card-title>
                           <div class="row">
-
                             <div class="col-sm">
                           <!--Title-->
-
-                          
-                          <!--Text-->
                           <p>Description :</p>
-                          <i class="fas fa-quote-left"></i>&nbsp;{{sondage.description}}&nbsp;<i class="fas fa-quote-right"></i>
+                          <div><p>{{sondage.description}}</p></div>
                           </div>
-
+    
                           <mat-divider vertical="true" style="color: black;"></mat-divider>
 
                           <div class="col-sm">
@@ -45,23 +42,73 @@
                                   {{lieu.libelleLieu}}
                                 </mat-list-option>
                               </mat-selection-list>
-                              <p>
-                                Option selected: {{lieu.selectedOptions.selected[0]?.value.id}}
-                              </p>
                           </div>
                         </div>
                          </div>
-
-                          
-
-
                           </div>
-                        <button mat-raised-button color="primary" (click)="voter(lieu.selectedOptions.selected[0]?.value.id,date.selectedOptions.selected[0]?.value.id, sondage.id)"><i class="far fa-thumbs-up"></i> Voter</button>
+                        <button mat-raised-button color="primary" [disabled]="!lieu.selectedOptions.selected[0]?.value.id || !date.selectedOptions.selected[0]?.value.id" (click)="voter(lieu.selectedOptions.selected[0]?.value.id,date.selectedOptions.selected[0]?.value.id, sondage.id)"><i class="far fa-thumbs-up"></i> Voter</button>
                         </mat-card-content>
-                          <!-- Card footer -->
-                        
+
                       </mat-card>
-                      <!-- Card -->
+                      <!-- /NOT VOTED CARD -->
+
+                      <!-- VOTED CARD -->
+                      <mat-card *ngIf="sondage.isVoted" style="margin: 2%;">
+                  
+                        <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+                          <!-- Card img -->
+
+                          <a>
+                            <div class="mask"></div>
+                          </a>
+                        </div>
+                        <!--Card content-->
+                        <mat-card-content>
+                          <mat-card-title>
+                            <h2>[VOTÉ] {{sondage.nom}}</h2>
+                          </mat-card-title>
+
+                          <div class="row">
+
+                            <div class="col-sm">
+                          <!--Title-->
+
+                            <div class="col-sm">
+                          <p>Description :</p>
+                          <i class="fas fa-quote-left"></i>&nbsp;{{sondage.description}}&nbsp;<i class="fas fa-quote-right"></i>
+                          </div>
+                       
+                          </div>
+    
+                          <mat-divider vertical="true" style="color: black;"></mat-divider>
+
+                          <div class="col-sm">
+                            <p>Les date/lieu votées : </p>
+                            <div class="row">
+                            <div class="col-sm">
+                              <mat-selection-list #date>
+                                <mat-list-option disabled="true" selected="true">
+                                  {{sondage.voted_date.date}}
+                                </mat-list-option>
+                              </mat-selection-list>
+                            </div>
+
+                            <div class="col-sm">
+                              <mat-selection-list #lieu>
+                                <mat-list-option disabled="true" selected="true">
+                                  {{sondage.voted_lieu.libelleLieu}}
+                                </mat-list-option>
+                              </mat-selection-list>
+                          </div>
+                        </div>
+                         </div>
+                          </div>
+
+                        </mat-card-content>
+
+                      </mat-card>
+                      <!-- VOTED CARD -->
+
         </div>
     </div>
     <div class="example-button-container" style="position: fixed; bottom: 7%; right: 5%;">

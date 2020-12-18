@@ -2,6 +2,9 @@ import { Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { SondageService } from '../services/sondage.service';
 import {MatDialog, MatDialogRef,MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogSondageComponent } from '../dialog/dialogSondage.component';
+import { VoteService } from '../services/vote.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import * as $ from "jquery";
 
 export interface DialogData {
   lieu: string;
@@ -17,23 +20,45 @@ export class HomeComponent implements OnInit {
   lieu: string;
   name: string;
   sondageList;
-  
+  votesList;
   
 
-  constructor(private sondageService: SondageService, public dialog: MatDialog) {}
+  constructor(private _snackBar: MatSnackBar, private sondageService: SondageService, private voteService : VoteService, public dialog: MatDialog) {}
 
   ngOnInit() {
-   this.sondageService.getAll()
+    this.voteService.getOwnVotes()
     .subscribe(
       (next) => {
-        console.log(next);
-        this.sondageList = next;
+        this.votesList = next;
+        this.sondageService.getAll()
+        .subscribe(
+          (next) => {
+            this.sondageList = next;
+            this.sondagesVote();
+          },
+          (error) => {
+          }
+        );
       },
       (error) => {
-        //this.isError = true;
-        //this.displayError(error.error);
       }
     );
+  }
+
+  sondagesVote() {
+    this.sondageList.map(sond => {
+      this.votesList.map(vot => {
+        if (sond.id == vot.sondage.id) {
+          var voted = {
+            voted_lieu : vot.lieu,
+            voted_date : vot.date,
+            isVoted : true
+          }
+          $.extend(sond, voted);
+        }
+        
+      })
+    })
   }
 
   openModal(): void {
@@ -41,19 +66,38 @@ export class HomeComponent implements OnInit {
       height: '300px',
       width: '900px',
       data: this.sondageList
-      //data: {name: this.name, lieu: this.lieu}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       console.log('The dialog was closed');
-      //this.animal = result;
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+
   voter(idLieu, idDate, idSondage): void {
-    console.log(idSondage);
-    
+    var vote = {
+      votant: {"id":1},
+      sondage: {"id":idSondage},
+      lieu : {"id":idLieu},
+      date: {"id": idDate}
+  }
+    this.voteService.voter(vote)
+    .subscribe(
+      (next) => {
+        this.ngOnInit();
+        this.openSnackBar("Vote effectué avec succés", "Fermer");
+      },
+      (error) => {
+        this.openSnackBar("Une erreur s'est produite", "Fermer");
+      }
+    );
   }
 
 }
