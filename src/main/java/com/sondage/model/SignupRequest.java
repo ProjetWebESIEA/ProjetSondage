@@ -1,30 +1,15 @@
 package com.sondage.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(	name = "users",
-        uniqueConstraints = {
-                @UniqueConstraint(columnNames = "username"),
-                @UniqueConstraint(columnNames = "email")
-        })
-public class User implements Serializable {
+import javax.validation.constraints.*;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class SignupRequest {
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min = 3, max = 20)
     private String username;
 
     @NotBlank
@@ -32,8 +17,10 @@ public class User implements Serializable {
     @Email
     private String email;
 
+    private Set<String> role;
+
     @NotBlank
-    @Size(max = 120)
+    @Size(min = 6, max = 40)
     private String password;
 
     @NotBlank
@@ -48,50 +35,11 @@ public class User implements Serializable {
     @Size(max = 20)
     private String civilite;
 
+    @NotBlank
     private Date dateInscription;
 
+    @NotBlank
     private Date derniereConnexion;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
-
-    public User() {
-    }
-
-    public User(String username,String email,String password,String nom,String prenom,String civilite,Date dateInscription,Date derniereConnexion) {
-
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.civilite = civilite;
-        this.dateInscription = dateInscription;
-        this.derniereConnexion = derniereConnexion;
-    }
-
-    public User(Long id, String username,String email,String password,String nom,String prenom,String civilite,Date dateInscription,Date derniereConnexion) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.civilite = civilite;
-        this.dateInscription = dateInscription;
-        this.derniereConnexion = derniereConnexion;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -117,14 +65,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<String> getRole() {
+        return this.role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Set<String> role) {
+        this.role = role;
     }
-
     public String getNom() {
         return nom;
     }
@@ -172,6 +119,5 @@ public class User implements Serializable {
     public void miseAJourDateConnection() {
         this.setDerniereConnexion(new Timestamp(System.currentTimeMillis()));
     }
-
 
 }

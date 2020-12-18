@@ -3,7 +3,7 @@ package com.sondage.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Dates {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     public Dates(Long id, Date date) {
@@ -40,5 +40,13 @@ public class Dates {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Dates{" +
+                "id=" + id +
+                ", date=" + date +
+                '}';
     }
 }
