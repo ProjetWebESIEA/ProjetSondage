@@ -22,7 +22,7 @@ Ce site permet de créer des sondages en y ajoutant une description, un lieu de 
 
 Page d'inscription
 
-<img width="1085" alt="page création de compte" src="https://user-images.githubusercontent.com/62753715/102668353-fb75e800-418b-11eb-85b1-ec2746fadeb4.png">
+<img width="1085" alt="page création de compte" src="https://user-images.githubusercontent.com/62753715/102668487-514a9000-418c-11eb-9615-ec54a610e7c1.png">
 
 Page d'authentification
 
