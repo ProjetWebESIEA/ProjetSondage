@@ -1,12 +1,16 @@
 package com.sondage.controller;
 
+import com.sondage.DAO.impl.UserDetailsImpl;
 import com.sondage.model.Dates;
 import com.sondage.model.Sondage;
+import com.sondage.model.User;
 import com.sondage.model.repository.DatesRepository;
 import com.sondage.model.repository.LieuRepository;
 import com.sondage.model.repository.SondageRepository;
+import com.sondage.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,6 +27,8 @@ public class SondageController {
     private DatesRepository dateRepository;
     @Autowired
     private LieuRepository lieuRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/api/sondage/getAll")
     public ResponseEntity<?> getAll() {
@@ -30,6 +36,13 @@ public class SondageController {
             return ResponseEntity.badRequest().body("Aucun sondage à afficher");
         }
         return ResponseEntity.ok(this.sondageRepository.findAll());
+    }
+
+    @GetMapping("/api/sondage/getOwn")
+    public ResponseEntity<?> getOwn() {
+        UserDetailsImpl connectedUser =  (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = this.userRepository.findById(connectedUser.getId()).get();
+        return ResponseEntity.ok(this.sondageRepository.findBycreateurSondage(user));
     }
 
     @GetMapping("/api/sondage/getLieux")
@@ -48,6 +61,8 @@ public class SondageController {
     @PostMapping("/api/sondage/create")
     public ResponseEntity<?> createSondage(@RequestBody Sondage sondage) {
         List<Dates> dates = new ArrayList<>();
+        UserDetailsImpl connectedUser =  (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = this.userRepository.findById(connectedUser.getId()).get();
         for (Dates date : sondage.getDate()) {
             if (!this.dateRepository.existsByDate(date.getDate())) {
                 Dates tmpDate = new Dates();
@@ -59,6 +74,7 @@ public class SondageController {
         }
         sondage.getDate().clear();
         sondage.setDate(dates);
+        sondage.setCreateurSondage(user);
         this.sondageRepository.save(sondage);
         return ResponseEntity.ok("Sondage crée avec succes");
     }
