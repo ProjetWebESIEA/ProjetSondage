@@ -22,5 +22,7 @@ Ce site permet de créer des sondages en y ajoutant une description, un lieu de 
 
 Affichage de la liste des personnages du jeu
 
-<img width="320" alt="Capture d’écran 2020-06-07 à 22 45 26" src="https://user-images.githubusercontent.com/62753715/83980026-ae7aa480-a912-11ea-9a3c-715b74cdee92.png">
-<img width="1440" alt="Capture d’écran 2020-12-16 à 14 30 06" src="https://user-images.githubusercontent.com/62753715/102662814-dbd8c280-417f-11eb-8903-45293294db33.png">
+<img width="1085" alt="page authentification" src="https://user-images.githubusercontent.com/62753715/102665868-f3b34500-4185-11eb-8085-b4d8c21f85fb.png">
+<img width="1085" alt="page information utilisateur" src="https://user-images.githubusercontent.com/62753715/102665872-f57d0880-4185-11eb-98fb-4863464e7a66.png">
+<img width="1085" alt="page inscription" src="https://user-images.githubusercontent.com/62753715/102665876-f746cc00-4185-11eb-8233-6e713720d032.png">
+<img width="1085" alt="page mes sondage" src="https://user-images.githubusercontent.com/62753715/102665878-f7df6280-4185-11eb-9472-8c6a7ae14922.png">
