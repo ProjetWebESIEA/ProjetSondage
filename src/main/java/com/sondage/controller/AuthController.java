@@ -58,8 +58,6 @@ public class AuthController {
         signUpRequest.initialiseDateInscription();
         signUpRequest.miseAJourDateConnection();
 
-        System.out.println(signUpRequest.getCivilite());
-
     // Create new user's account
     User user = new User(
             signUpRequest.getUsername(),
