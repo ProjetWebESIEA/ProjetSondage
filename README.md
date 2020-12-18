@@ -30,9 +30,35 @@ Page d'authentification
 
 ### Deuxième Ecran
 
+Création du sondage
+
+<img width="1085" alt="Création sondage titre" src="https://user-images.githubusercontent.com/62753715/102667582-06c81400-418a-11eb-9fb0-6e3dcb5381ad.png">
+
+--> Lieu
+<img width="1085" alt="Création sondage lieu" src="https://user-images.githubusercontent.com/62753715/102667584-07f94100-418a-11eb-9a65-c52cbb00edeb.png">
+
+--> Date
+<img width="1085" alt="Creation sondage date" src="https://user-images.githubusercontent.com/62753715/102667585-09c30480-418a-11eb-9ebc-916b387cb439.png">
+
+--> Description
+<img width="1085" alt="Création sondage description" src="https://user-images.githubusercontent.com/62753715/102667588-0af43180-418a-11eb-8f35-8511b76a3abb.png">
+
+Résultat de la création du sondage
+
+<img width="1085" alt="Résultat création du sondage" src="https://user-images.githubusercontent.com/62753715/102667590-0cbdf500-418a-11eb-9b04-0c30a031b3d1.png">
+
+Sondage coché par utilisateur
+
+<img width="1085" alt="sondage coché" src="https://user-images.githubusercontent.com/62753715/102667593-0e87b880-418a-11eb-9e0b-38ee7ff00362.png">
+
+Résultat de la validation du sondage
+
+<img width="1085" alt="validation sondage" src="https://user-images.githubusercontent.com/62753715/102667598-10517c00-418a-11eb-9316-23491fbc1b8f.png">
 
 ### Troisième Ecran
+
 Page d'informations utilisateur
+
 <img width="1085" alt="page information utilisateur" src="https://user-images.githubusercontent.com/62753715/102665872-f57d0880-4185-11eb-98fb-4863464e7a66.png">
 
 
