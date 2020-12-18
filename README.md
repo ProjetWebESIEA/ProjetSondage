@@ -22,11 +22,11 @@ Ce site permet de créer des sondages en y ajoutant une description, un lieu de 
 
 Page d'inscription
 
-<img width="1085" alt="page inscription" src="https://user-images.githubusercontent.com/62753715/102665876-f746cc00-4185-11eb-8233-6e713720d032.png">
+<img width="1085" alt="page création de compte" src="https://user-images.githubusercontent.com/62753715/102668353-fb75e800-418b-11eb-85b1-ec2746fadeb4.png">
 
 Page d'authentification
 
-<img width="1085" alt="page authentification" src="https://user-images.githubusercontent.com/62753715/102665868-f3b34500-4185-11eb-8085-b4d8c21f85fb.png">
+<img width="1085" alt="page authentification" src="https://user-images.githubusercontent.com/62753715/102668348-f9ac2480-418b-11eb-9690-cb2da40e3093.png">
 
 ### Deuxième Ecran
 
