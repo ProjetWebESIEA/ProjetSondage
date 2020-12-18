@@ -20,11 +20,11 @@ Ce site permet de créer des sondages en y ajoutant une description, un lieu de 
 
 ### Premier Ecran
 
-Page d'inscription
+Je commence par m'inscrire sur le site de sondage :
 
 <img width="1085" alt="page création de compte" src="https://user-images.githubusercontent.com/62753715/102668487-514a9000-418c-11eb-9615-ec54a610e7c1.png">
 
-Page d'authentification
+Après s'être inscrit, je me log directement : 
 
 <img width="1085" alt="page authentification" src="https://user-images.githubusercontent.com/62753715/102668348-f9ac2480-418b-11eb-9690-cb2da40e3093.png">
 
