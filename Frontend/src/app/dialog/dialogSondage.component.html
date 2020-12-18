@@ -1,0 +1,153 @@
+
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <!-- Form pour le nom -->
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Nom de la rencontre</ng-template>
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Nom de la rencontre" formControlName="firstCtrl" name="nom" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Suiv.</button>
+      </div>
+    </form>
+
+  </mat-step>
+
+
+
+  <mat-step [stepControl]="secondFormGroup">
+
+    <!-- Form pour le lieu -->
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Lieu de rencontre</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Selectionnez un lieu</mat-label>
+        <mat-hint>Selectionnez un lieu puis appuyez sur (+)</mat-hint>
+        <mat-select formControlName="secondCtrl" name="lieux" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let lieu of lieux" [value]="lieu">
+            {{lieu.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button color="primary" (click)="addInput()" aria-label="Example icon button with a home icon">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <mat-list *ngFor="let lieuxCh of lieuxChoisis">
+        <mat-list-item >{{lieuxCh.secondCtrl.viewValue}}</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+
+      <div>
+        <button mat-button matStepperPrevious>Prec.</button>
+        <button mat-button matStepperNext>Suiv.</button>
+      </div>
+
+
+    </form>
+  </mat-step>
+
+
+
+  <mat-step [stepControl]="thirdFormGroup">
+
+    <!-- Form pour la date -->
+    <form [formGroup]="thirdFormGroup">
+    <ng-template matStepLabel>Date de la rencontre</ng-template>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Choisir une date</mat-label>
+      <mat-hint>Selectionnez une date puis appuyez sur (+)</mat-hint>
+      <input matInput [matDatepicker]="picker" formControlName="thirdCtrl">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-icon-button color="primary" (click)="addInputDate()" aria-label="Example icon button with a home icon">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <mat-list *ngFor="let dateCh of dateChoisis">
+      <mat-list-item >{{dateCh.thirdCtrl}}</mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+      <div>
+        <button mat-button matStepperPrevious>Prec.</button>
+        <button mat-button matStepperNext>Suiv.</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fourthFormGroup">
+    <!-- Form pour la date -->
+    <form [formGroup]="fourthFormGroup">
+    <ng-template matStepLabel>Description de la rencontre</ng-template>
+
+    <mat-form-field appearance="fill">
+
+      <mat-label>Description</mat-label>
+      <textarea matInput #message formControlName="fourthCtrl" maxlength="256" placeholder="Petite description..."></textarea>
+      <mat-hint>{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Prec.</button>
+        <button mat-button matStepperNext>Suiv.</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step>
+    <ng-template matStepLabel>Fin</ng-template>
+    <p>Appuyez sur terminer pour valider</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="closeDialog()">Terminer</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+
+
+<!--
+
+
+<h1 mat-dialog-title>Ajouter un sondage</h1>
+
+<div mat-dialog-content>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Nom de la rencontre/evenement</mat-label>
+    <input matInput id="nom" [(ngModel)]="data.nom">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Lieu de la rencontre/evenement</mat-label>
+    <input matInput id="lieu" [(ngModel)]="data.lieu">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Date de la rencontre/evenement</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="data.date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Description</mat-label>
+    <input matInput id="description" [(ngModel)]="data.description">
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Valider</button>
+</div>
+-->

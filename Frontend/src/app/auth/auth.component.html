@@ -1,0 +1,46 @@
+<!---->
+<div class="cardImg" class="container-fluid" layout="column" layout-align="center" style="height: 90%;" class="w-responsive text-center mx-auto p-3 mt-2 align-middle">
+    <!-- Authentication Card -->
+    <div flex="50" layout="row" style="height: 90%;" class="auth">
+    <mdb-card class="align-middle" cascade="true" layout="row" flex="50">
+      <!--Card content-->
+      <mdb-card-body cascade="true">
+    
+        <!--Title-->
+        <mdb-card-title class="text-center">
+          <h4 class="light-blue-text">
+           <strong>Connexion</strong> 
+          </h4>
+        </mdb-card-title>
+    
+        <!--Text-->
+        <form [formGroup]="SignInForm" (ngSubmit)="logIn()">
+          <!-- Username input -->
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="name" class="form-control" formControlName="username" placeholder="Nom d'utilisateur" required>
+          </div>
+          <!-- Password input -->
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="form-control" formControlName="password" placeholder="Mot de passe" required>
+          </div>
+          <button type="submit" class="btn btn-primary" color="primary" [disabled]="!SignInForm.valid" mat-raised-button>Connexion</button>
+        </form> 
+
+        <div class="card-footer text-muted text-center mt-4">
+         <a routerLink="/createProfile" routerLinkActive="active"> Inscrivez-vous</a> 
+        </div>
+      </mdb-card-body>
+    </mdb-card>
+
+    <div class="alert alert-danger msgalert" role="alert" [hidden]="!isError">
+      {{ errorMessage }}
+    </div>
+  
+      <!-- Authentication Card -->
+    </div>
+
+</div>
+
+

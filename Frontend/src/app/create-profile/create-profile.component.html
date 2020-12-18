@@ -1,0 +1,76 @@
+
+<!---->
+<div class="cardImg" class="container-fluid" style="height: 90%;" class="w-responsive text-center mx-auto p-3 mt-2 align-middle">
+  <!-- Authentication Card -->
+  <div flex="50" layout="row" style="height: 90%;" class="register"> 
+  <mdb-card>
+    <!--Card content-->
+    <mdb-card-body>
+  
+      <!--Title-->
+      <mdb-card-title class="text-center">
+          <h4 class="light-blue-text">
+           <strong>Inscription</strong> 
+          </h4>
+        </mdb-card-title>
+  
+      <form [formGroup]="SignInForm" (ngSubmit)="register()">
+
+                <!-- Civilite input -->
+      <div class="form-group">
+        <label>Civilité</label>
+
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="civMr" formControlName="civilite" name="civilite" value="MONSIEUR">
+                <label class="custom-control-label" for="civMr">M.</label>
+              </div>
+            
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="civMme" formControlName="civilite" name="civilite" value="MADAME">
+                <label class="custom-control-label" for="civMme">MME</label>
+              </div>
+
+      </div>
+                <!-- nom input -->
+                <div class="form-group">
+                  <label for="nom">Nom</label>
+                  <input type="text" id="name" class="form-control" formControlName="nom" placeholder="Nom" required>
+                </div>
+
+                <!-- prenom input -->
+                <div class="form-group">
+                  <label for="prenom">Prénom</label>
+                  <input type="text" id="prenom" class="form-control" formControlName="prenom" placeholder="Prénom" required>
+                </div>
+        <!-- Username input -->
+        <div class="form-group">
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" id="username" class="form-control" formControlName="username" placeholder="Nom d'utilisateur" required>
+        </div>
+         <!-- Email input -->
+         <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" id="email" class="form-control" formControlName="email" placeholder="email" required>
+        </div>
+        <!-- Password input -->
+        <div class="form-group">
+          <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" class="form-control" formControlName="password" placeholder="Mot de passe" required>
+        </div>
+      
+
+      <button type="submit" class="btn btn-primary" color="primary" [disabled]="!SignInForm.valid" mat-raised-button>Creer compte</button>
+      
+      </form>
+  
+
+      <div class="card-footer text-muted text-center mt-4">
+          <a routerLink="/auth" class="indigo-text" routerLinkActive="active"> Connexion</a> 
+         </div>
+    </mdb-card-body>
+  </mdb-card>
+  </div>
+    <!-- Authentication Card -->
+
+</div>
