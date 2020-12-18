@@ -4,11 +4,24 @@
 
 Ce site permet de créer des sondages en y ajoutant une description, un lieu de rendez-vous et une date. Le site nous permet aussi de nous connecter en tant qu'utilisateur pour pouvoir intéragir avec les sondages.
 
-### Prérequis
+### Technologies
 
 * Installation de IntelliJ pour le back (Java)
 * Installation de VSCode pour le front (Angular)
 * Utilisation de PostgreSQL pour la Base de donnée
+
+### Prérequis
+
+Pour lancer le back
+* ./mvnw spring-boot:run
+
+Pour lance le front
+* cd Frontend
+* npm install
+* ng serve
+
+Sur Internet 
+* localhost:4200/auth
 
 ### Consignes respectées
 
